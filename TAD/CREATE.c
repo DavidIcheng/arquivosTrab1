@@ -1,8 +1,4 @@
-#include <CREATE.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
+#include "CREATE.h"
 
 // typedef struct Cabecalho {
 //     char status;
@@ -12,22 +8,22 @@
 //     int nroParesEstacao;
 // } cabecalho;
 
-typedef struct Estacao {
-    char removido;
-    int proximo;
-    int codEstacao;
-    int codLinha;
-    int codProxEstacao;
-    int distProxEstacao;
-    int codLinhaIntegra;
-    int codEstIntegra;
-    int tamNomeEstacao;
-    char* nomeEstacao;
-    int tamNomeLinha;
-    char* nomeLinha;
-} estacao;
 
-void CREATE (char *arquivoCSV, char *arquivoBIN) {
+bool existeEstacao(int* arrEstacoes, int codEstacao, int nroEstacoes) {
+    for(int i = 0; i < nroEstacoes; i++) {
+        if(arrEstacoes[i] == codEstacao) return true;
+    }
+    return false;
+}
+
+bool existeParEstacao(pair* paresDeEstacao, pair parEstacao, int nroParesDeEstacoes) {
+    for(int i = 0; i < nroParesDeEstacoes; i++) {
+        if(paresDeEstacao[i].ff == parEstacao.ff && paresDeEstacao[i].ss == parEstacao.ss) return true;
+    }
+    return false;
+}
+
+void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
     int um = 1;
     int zero = 0;
     char czero = '0';
@@ -53,9 +49,22 @@ void CREATE (char *arquivoCSV, char *arquivoBIN) {
 
     fgets(str,105,ler); //pular a primeira linha
     
+    int proxRRN = 0;
     int nroEstacoes = 0;
+    int nroParesDeEstacoes = 0;
+    
+    int limite = 100;
+    int* arrEstacoes = malloc(limite*sizeof(int));
+    pair* arrParesEstacoes = malloc(limite*sizeof(pair));
+    
     while(fgets(str,105,ler)) {
-        nroEstacoes++;
+        proxRRN++;
+
+        if(nroEstacoes > limite-10) {
+            limite *= 2;
+            arrEstacoes = realloc(arrEstacoes, limite*sizeof(int));
+            arrParesEstacoes = realloc(arrEstacoes, limite*sizeof(pair));
+        }
         
         estacao temp;
         // strsep modifica o ponteiro, por isso usamos uma variável auxiliar 'ptr'
@@ -130,22 +139,36 @@ void CREATE (char *arquivoCSV, char *arquivoBIN) {
         for(int i = bytesusados; i < 80; i++){
             fwrite(&cifrao,sizeof(char),1,escrever);
         }
+
+        // nroEstacoes++;
+        if(!existeEstacao(arrEstacoes, temp.codEstacao, nroEstacoes)) {
+            arrEstacoes[nroEstacoes++] = temp.codEstacao;
+        }
+        
+        pair parEstacao = make_pair(temp.codEstacao, temp.codProxEstacao);
+        if(temp.codProxEstacao != -1 && !existeParEstacao(nroParesDeEstacoes, parEstacao, nroParesDeEstacoes)) {
+            arrParesEstacoes[nroParesDeEstacoes++] = parEstacao;
+        }
     }
     
 
     fseek(escrever, 0, SEEK_SET); // volta p comeco
+    // SEEK_SET: movimentação do cmc do arquivo 
+    // SEEK_CUR: a partir da posição do ponteiro
+    // SEEK_END: do final
+
     int topo = -1;
     fwrite(&c_um,sizeof(char),1,escrever);
     fwrite(&topo, sizeof(int), 1, escrever);
-    fwrite(&zero, sizeof(int), 1, escrever);
+    fwrite(&proxRRN, sizeof(int), 1, escrever);
     fwrite(&nroEstacoes, sizeof(int), 1, escrever);
-    fwrite(&zero, sizeof(int), 1, escrever);
+    fwrite(&nroParesDeEstacoes, sizeof(int), 1, escrever);
     
 
 
     fclose(escrever);
     fclose(ler);
 
-    binarioNaTela();
-    return 0;
+    BinarioNaTela(arquivoBIN);
+    return;
 }
