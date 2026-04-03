@@ -1,0 +1,200 @@
+Cod: 190, Nome: Jardim Romano, Linha: Safira
+Cod: 144, Nome: Granja Julieta, Linha: Esmeralda
+Cod: 78, Nome: Moema, Linha: Lilas
+Cod: 29, Nome: Brigadeiro, Linha: Verde
+Cod: 150, Nome: Primavera-Interlagos, Linha: Esmeralda
+Cod: 183, Nome: Tatuape, Linha: Safira
+Cod: 95, Nome: Varzea Paulista, Linha: Rubi
+Cod: 164, Nome: Ribeirao Pires, Linha: Turquesa
+Cod: 179, Nome: Braz Cubas, Linha: Coral
+Cod: 127, Nome: Jardim Belval, Linha: Diamante
+Cod: 141, Nome: Vila Olimpia, Linha: Esmeralda
+Cod: 83, Nome: Vila Prudente, Linha: Prata
+Cod: 60, Nome: Fradique Coutinho, Linha: Amarela
+Cod: 41, Nome: Republica, Linha: Vermelha
+Cod: 44, Nome: Pedro II, Linha: Vermelha
+Cod: 42, Nome: Anhangabau, Linha: Vermelha
+Cod: 182, Nome: Bras, Linha: Safira
+Cod: 139, Nome: Hebraica-Reboucas, Linha: Esmeralda
+Cod: 98, Nome: Francisco Morato, Linha: Rubi
+Cod: 25, Nome: Sumare, Linha: Verde
+Cod: 86, Nome: Camilo Haddad, Linha: Prata
+Cod: 128, Nome: Jardim Silveira, Linha: Diamante
+Cod: 96, Nome: Campo Limpo Paulista, Linha: Rubi
+Cod: 170, Nome: Dom Bosco, Linha: Coral
+Cod: 130, Nome: Sagrado Coracao, Linha: Diamante
+Cod: 30, Nome: Paraiso, Linha: Verde
+Cod: 68, Nome: Vila das Belezas, Linha: Lilas
+Cod: 163, Nome: Guapituba, Linha: Turquesa
+Cod: 106, Nome: Pirituba, Linha: Rubi
+Cod: 175, Nome: Poa, Linha: Coral
+Cod: 116, Nome: Domingos de Moras, Linha: Diamante
+Cod: 76, Nome: Campo Belo, Linha: Lilas
+Cod: 84, Nome: Oratorio, Linha: Prata
+Cod: 2, Nome: Parada Inglesa, Linha: Azul
+Cod: 82, Nome: Chacara Klabin, Linha: Lilas
+Cod: 110, Nome: Palmeiras-Barra Funda, Linha: Rubi
+Cod: 87, Nome: Vila Tostoi, Linha: Prata
+Cod: 36, Nome: Tamanduatei, Linha: Verde
+Cod: 108, Nome: Lapa, Linha: Rubi
+Cod: 33, Nome: Santos-Imigrantes, Linha: Verde
+Cod: 112, Nome: Bras, Linha: Rubi
+Cod: 188, Nome: Jardim Helena-Vila Mara, Linha: Safira
+Cod: 65, Nome: Vila Sonia, Linha: Amarela
+Cod: 12, Nome: Japao-Liberdade, Linha: Azul
+Cod: 7, Nome: Armenia, Linha: Azul
+Cod: 134, Nome: Presidente Altino, Linha: Esmeralda
+Cod: 21, Nome: Sao Judas, Linha: Azul
+Cod: 154, Nome: Juventus-Mooca, Linha: Turquesa
+Cod: 133, Nome: Osasco, Linha: Esmeralda
+Cod: 197, Nome: Tatuape, Linha: Jade
+Cod: 115, Nome: Lapa, Linha: Diamante
+Cod: 20, Nome: Saude, Linha: Azul
+Cod: 192, Nome: Itaquaquecetuba, Linha: Safira
+Cod: 18, Nome: Santa Cruz, Linha: Azul
+Cod: 114, Nome: Palmeiras-Barra Funda, Linha: Diamante
+Cod: 54, Nome: Corinthians-Itaquera, Linha: Vermelha
+Cod: 93, Nome: Jardim Colonial, Linha: Prata
+Cod: 123, Nome: Carapicuiba, Linha: Diamante
+Cod: 71, Nome: Largo Treze, Linha: Lilas
+Cod: 5, Nome: Carandiru, Linha: Azul
+Cod: 177, Nome: Suzano, Linha: Coral
+Cod: 92, Nome: Sao Mateus, Linha: Prata
+Cod: 121, Nome: Quitauna, Linha: Diamante
+Cod: 126, Nome: Barueri, Linha: Diamante
+Cod: 171, Nome: Jose Bonifacio, Linha: Coral
+Cod: 145, Nome: Joao Dias, Linha: Esmeralda
+Cod: 81, Nome: Santa Cruz, Linha: Lilas
+Cod: 64, Nome: Sao Paulo-Morumbi, Linha: Amarela
+Cod: 67, Nome: Campo Limpo, Linha: Lilas
+Cod: 120, Nome: Comandante Sampaio, Linha: Diamante
+Cod: 135, Nome: Ceasa, Linha: Esmeralda
+Cod: 55, Nome: Luz, Linha: Amarela
+Cod: 159, Nome: Prefeito Saladino, Linha: Turquesa
+Cod: 70, Nome: Santo Amaro, Linha: Lilas
+Cod: 61, Nome: Faria Lima, Linha: Amarela
+Cod: 167, Nome: Bras, Linha: Coral
+Cod: 58, Nome: Paulista, Linha: Amarela
+Cod: 91, Nome: Fazenda da Juta, Linha: Prata
+Cod: 189, Nome: Itaim Paulista, Linha: Safira
+Cod: 45, Nome: Bras, Linha: Vermelha
+Cod: 140, Nome: Cidade Jardim, Linha: Esmeralda
+Cod: 107, Nome: Piqueri, Linha: Rubi
+Cod: 129, Nome: Jandira, Linha: Diamante
+Cod: 35, Nome: Sacoma, Linha: Verde
+Cod: 89, Nome: Jardim Planalto, Linha: Prata
+Cod: 156, Nome: Tamanduatei, Linha: Turquesa
+Cod: 6, Nome: Portuguesa-Tiete, Linha: Azul
+Cod: 97, Nome: Botujuru, Linha: Rubi
+Cod: 196, Nome: Bras, Linha: Jade
+Cod: 53, Nome: Artur Alvin, Linha: Vermelha
+Cod: 102, Nome: Perus, Linha: Rubi
+Cod: 180, Nome: Mogi das Cruzes, Linha: Coral
+Cod: 119, Nome: Osasco, Linha: Diamante
+Cod: 109, Nome: Agua Branca, Linha: Rubi
+Cod: 48, Nome: Tatuape, Linha: Vermelha
+Cod: 118, Nome: Presidente Altino, Linha: Diamante
+Cod: 43, Nome: Se, Linha: Vermelha
+Cod: 199, Nome: Guarulhos-Cecap, Linha: Jade
+Cod: 13, Nome: Sao Joaquim, Linha: Azul
+Cod: 153, Nome: Bras, Linha: Turquesa
+Cod: 166, Nome: Luz, Linha: Coral
+Cod: 174, Nome: Ferraz de Vasconcelos, Linha: Coral
+Cod: 49, Nome: Carrao, Linha: Vermelha
+Cod: 50, Nome: Penha, Linha: Vermelha
+Cod: 181, Nome: Estudantes, Linha: Coral
+Cod: 152, Nome: Mendes-Vila Natal, Linha: Esmeralda
+Cod: 26, Nome: Clinicas, Linha: Verde
+Cod: 38, Nome: Palmeiras-Barra Funda, Linha: Vermelha
+Cod: 74, Nome: Borba Gato, Linha: Lilas
+Cod: 169, Nome: Corinthians-Itaquera, Linha: Coral
+Cod: 113, Nome: Julio Prestes, Linha: Diamante
+Cod: 90, Nome: Sapopemba, Linha: Prata
+Cod: 176, Nome: Calmon Viana, Linha: Coral
+Cod: 185, Nome: USP Leste, Linha: Safira
+Cod: 200, Nome: Aeroporto-Guarulhos, Linha: Jade
+Cod: 39, Nome: Marechal Deodoro, Linha: Vermelha
+Cod: 47, Nome: Belem, Linha: Vermelha
+Cod: 103, Nome: Vila Aurora, Linha: Rubi
+Cod: 14, Nome: Vergueiro, Linha: Azul
+Cod: 161, Nome: Capuava, Linha: Turquesa
+Cod: 105, Nome: Vila Clarice, Linha: Rubi
+Cod: 80, Nome: Hospital Sao Paulo, Linha: Lilas
+Cod: 136, Nome: Vila Lobos-Jaguare, Linha: Esmeralda
+Cod: 32, Nome: Chacara Klabin, Linha: Verde
+Cod: 168, Nome: Tatuape, Linha: Coral
+Cod: 138, Nome: Pinheiros, Linha: Esmeralda
+Cod: 88, Nome: Vila Uniao, Linha: Prata
+Cod: 59, Nome: Oscar Freire, Linha: Amarela
+Cod: 17, Nome: Vila Mariana, Linha: Azul
+Cod: 186, Nome: Comendador Ermelino, Linha: Safira
+Cod: 191, Nome: Engenheiro Manoel Feio, Linha: Safira
+Cod: 24, Nome: Vila Madalena, Linha: Verde
+Cod: 155, Nome: Ipiranga, Linha: Turquesa
+Cod: 46, Nome: Bresser-Mooca, Linha: Vermelha
+Cod: 34, Nome: Alto do Ipiranga, Linha: Verde
+Cod: 151, Nome: Grajau, Linha: Esmeralda
+Cod: 51, Nome: Guilhermina-Esperanca, Linha: Vermelha
+Cod: 69, Nome: Giovanni Gronchi, Linha: Lilas
+Cod: 31, Nome: Ana Rosa, Linha: Verde
+Cod: 165, Nome: Rio Grande da Serra, Linha: Turquesa
+Cod: 9, Nome: Luz, Linha: Azul
+Cod: 4, Nome: Santana, Linha: Azul
+Cod: 143, Nome: Morumbi, Linha: Esmeralda
+Cod: 79, Nome: AACD-Servidor, Linha: Lilas
+Cod: 132, Nome: Itapevi, Linha: Diamante
+Cod: 117, Nome: Imperatriz Leopoldina, Linha: Diamante
+Cod: 125, Nome: Antonio Joao, Linha: Diamante
+Cod: 124, Nome: Santa Terezinha, Linha: Diamante
+Cod: 195, Nome: Luz, Linha: Jade
+Cod: 101, Nome: Caieiras, Linha: Rubi
+Cod: 11, Nome: Se, Linha: Azul
+Cod: 149, Nome: Autodromo, Linha: Esmeralda
+Cod: 162, Nome: Maua, Linha: Turquesa
+Cod: 19, Nome: Praca da arvore, Linha: Azul
+Cod: 66, Nome: Capao Redondo, Linha: Lilas
+Cod: 104, Nome: Jaragua, Linha: Rubi
+Cod: 62, Nome: Pinheiros, Linha: Amarela
+Cod: 158, Nome: Utinga, Linha: Turquesa
+Cod: 99, Nome: Baltazar Fidelis, Linha: Rubi
+Cod: 157, Nome: Sao Caetano do Sul, Linha: Turquesa
+Cod: 187, Nome: Sao Miguel Paulista, Linha: Safira
+Cod: 194, Nome: Calmon Viana, Linha: Safira
+Cod: 131, Nome: Engenheiro Cardoso, Linha: Diamante
+Cod: 23, Nome: Jabaquara, Linha: Azul
+Cod: 160, Nome: Santo Andre, Linha: Turquesa
+Cod: 22, Nome: Conceicao, Linha: Azul
+Cod: 28, Nome: Trianon-Masp, Linha: Verde
+Cod: 8, Nome: Tiradentes, Linha: Azul
+Cod: 52, Nome: Patriarca-Vila Re, Linha: Vemelha
+Cod: 142, Nome: Berrini, Linha: Esmeralda
+Cod: 173, Nome: Antonio Gianetti Neto, Linha: Coral
+Cod: 15, Nome: Paraiso, Linha: Azul
+Cod: 178, Nome: Jundiapeba, Linha: Coral
+Cod: 57, Nome: Higienopolis-Mackenzie, Linha: Amarela
+Cod: 148, Nome: Jurubatuba, Linha: Esmeralda
+Cod: 63, Nome: Butanta, Linha: Amarela
+Cod: 16, Nome: Ana Rosa, Linha: Azul
+Cod: 137, Nome: Cidade Universitaria, Linha: Esmeralda
+Cod: 198, Nome: Engenheiro Goulart, Linha: Jade
+Cod: 193, Nome: Aracare, Linha: Safira
+Cod: 1, Nome: Tucuruvi, Linha: Azul
+Cod: 40, Nome: Santa Cecilia, Linha: Vermelha
+Cod: 94, Nome: Jundiai, Linha: Rubi
+Cod: 72, Nome: Adolfo Pinheiro, Linha: Lilas
+Cod: 172, Nome: Guaianases, Linha: Coral
+Cod: 100, Nome: Franco da Rocha, Linha: Rubi
+Cod: 122, Nome: General Miguel Costa, Linha: Diamante
+Cod: 184, Nome: Engenheiro Goulart, Linha: Safira
+Cod: 56, Nome: Republica, Linha: Amarela
+Cod: 146, Nome: Santo Amaro, Linha: Esmeralda
+Cod: 77, Nome: Eucaliptos, Linha: Lilas
+Cod: 3, Nome: Jardim Sao Paulo, Linha: Azul
+Cod: 10, Nome: Sao Bento, Linha: Azul
+Cod: 85, Nome: Sao Lucas, Linha: Prata
+Cod: 27, Nome: Consolacao, Linha: Verde
+Cod: 37, Nome: Vila Prudente, Linha: Verde
+Cod: 111, Nome: Luz, Linha: Rubi
+Cod: 75, Nome: Brooklin, Linha: Lilas
+Cod: 73, Nome: Alto da Boa Vista, Linha: Lilas
+Cod: 147, Nome: Socorro, Linha: Esmeralda
