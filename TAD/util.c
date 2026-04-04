@@ -14,7 +14,15 @@ pair make_pair(int ff, int ss) {
 
 void printar_estacao(estacao* e) {
 
-    printf("%d %s %d %s", e->codEstacao, e-> nomeEstacao, e->codLinha, e->nomeLinha);
+    printf("%d ", e->codEstacao);
+    if(e->nomeEstacao != NULL) {
+        printf("%s ", e->nomeEstacao);
+    } else printf("NULO ");
+    printf("%d ", e->codLinha);
+    if(e->nomeLinha != NULL) {
+        printf("%s ", e->nomeLinha);
+    } else printf("NULO ");
+    
     if(e->codProxEstacao != -1) {
         printf("%d ", e->codProxEstacao);
     } else printf("NULO ");
@@ -29,4 +37,17 @@ void printar_estacao(estacao* e) {
     } else printf("NULO\n");
 
     return;
+}
+
+void nulifica_estacao(estacao* temp){
+    temp->codEstacao = -1;
+    temp->codLinha = -1;
+    temp->codProxEstacao = -1;
+    temp->distProxEstacao = -1;
+    temp->codLinhaIntegra = -1;
+    temp->codEstIntegra = -1;
+    temp->tamNomeEstacao = -1;
+    temp->nomeEstacao = NULL;
+    temp->tamNomeLinha = -1;
+    temp->nomeLinha = NULL;
 }

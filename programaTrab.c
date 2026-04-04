@@ -3,7 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "TAD/CREATE.h"
+#include "TAD/SELECT.h"
+#include "TAD/DELETE.h"
 #include "TAD/fornecidas.h"
+#include "TAD/util.h"
+#include "TAD/SELECT_ALL.h"
 
 // typedef struct Cabecalho {
 //     char status;
@@ -12,21 +16,6 @@
 //     int nroEstacoes;
 //     int nroParesEstacao;
 // } cabecalho;
-
-typedef struct Estacao {
-    char removido;
-    int proximo;
-    int codEstacao;
-    int codLinha;
-    int codProxEstacao;
-    int distProxEstacao;
-    int codLinhaIntegra;
-    int codEstIntegra;
-    int tamNomeEstacao;
-    char* nomeEstacao;
-    int tamNomeLinha;
-    char* nomeLinha;
-} estacao;
 
 int main(void) {
     int comando;
@@ -42,23 +31,21 @@ int main(void) {
     }else if(comando == 2){
         char entrada[40];
         scanf(" %s",entrada);
+        SELECT_ALL(entrada);
         //printar(entrada);
     }else if(comando == 3){
         char entrada[40];
         scanf(" %s",entrada);
         int n;
         scanf(" %d",&n);
-        for(int i = 0; i < n; i++){
-            //busca(entrada);
-        }
+        SELECT(entrada,n);
     }else if(comando == 4){
         char entrada[40];
         scanf(" %s",entrada);
         int n;
         scanf(" %d",&n);
-        for(int i = 0; i < n; i++){
-            //remocao(entrada);
-        }
+        int x = DELETE(entrada,n);
+        x++;
     }else if(comando == 5){
         //insercao
     }else if(comando == 6){

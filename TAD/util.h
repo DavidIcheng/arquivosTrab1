@@ -36,4 +36,6 @@ pair make_pair(int ff, int ss);
 
 void printar_estacao(estacao* estacaoPrintar);
 
+void nulifica_estacao(estacao* temp);
+
 #endif

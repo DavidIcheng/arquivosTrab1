@@ -3,30 +3,26 @@
 #include <stdlib.h>
 #include <string.h>
 #include "util.h"
+#include "buscar.h"
 
-int DELETE(char *arquivoBIN, int n){
-    int um = 1;
-    int zero = 0;
-    char czero = '0';
-    char c_um = '1';
-    char cifrao = '$';
-    
-    FILE *escrever;
-    escrever = fopen(arquivoBIN,"rb+");
+void SELECT(char *arquivoBIN, int n){
+    FILE *arquivo;
+    arquivo = fopen(arquivoBIN,"rb+");
     // fseek(escrever, 1, SEEK_SET);
-    fwrite(&czero,sizeof(char),1,escrever);
+    fwrite(&c_zero,sizeof(char),1,arquivo);
 
     for(int i = 0; i < n; i++){
         int *lista;
         int m;
         estacao temp;
+        nulifica_estacao(&temp);
         scanf("%d",&m);
         for(int j = 0; j < m; j++){
             char s[20];
             scanf(" %s",s);
             if(strcmp(s, "codEstacao") == 0){
                 scanf(" %d",&temp.codEstacao);
-            }else if(strcmp(s,"codLinha" == 0)){
+            }else if(strcmp(s,"codLinha") == 0){
                 scanf(" %d",&temp.codLinha);
             }else if(strcmp(s,"codProxEstacao") == 0){
                 scanf(" %d",&temp.codProxEstacao);
@@ -50,15 +46,12 @@ int DELETE(char *arquivoBIN, int n){
                 printf("Campo invalido");
             }
         }
-        //buscar(lista,temp);
-        for(int i = 1; i < lista[0] + 1; i++){ //primeiro elemento da lista determina o tamanho da lista
-            // fseek(escrever, 17 + (80) * lista[i], SEEK_SET);
-            // fwrite(&czero,sizeof(char),1,escrever);
-            // //fwrite(topo,sizeof(int),1,escrever);
-            // topo = lista[i];
-        }
+        int tam = buscar_estacao(&temp, &lista, arquivo, true);
+        printf("ALOUUUU");
     }
-    fseek(escrever,0,SEEK_SET);
-    fwrite(&c_um,sizeof(char),1,escrever);
-    fclose(escrever);
+    fseek(arquivo,0,SEEK_SET);
+    fwrite(&c_um,sizeof(char),1,arquivo);
+    fclose(arquivo);
+
+    return;
 }

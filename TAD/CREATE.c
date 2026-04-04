@@ -112,7 +112,7 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
         temp.codLinhaIntegra = (token && *token != '\0') ? atoi(token) : -1;
 
         // 8. codEstIntegra (Lida com o final da linha e o \n)
-        token = strsep(&resto, ",\n");
+        token = strsep(&resto, "\r\n"); 
         temp.codEstIntegra = (token && *token != '\0') ? atoi(token) : -1;
 
         // Apenas para conferência:
@@ -122,12 +122,11 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
         fwrite(&temp.codEstacao,sizeof(int),1,escrever);
         fwrite(&temp.codLinha,sizeof(int),1,escrever);
         fwrite(&temp.codProxEstacao,sizeof(int),1,escrever);
-        //printf("Cod: %d, Nome: %s, Linha: %s\n", temp.codEstacao, temp.nomeEstacao, temp.nomeLinha);
         fwrite(&temp.distProxEstacao,sizeof(int),1,escrever);
         fwrite(&temp.codLinhaIntegra,sizeof(int),1,escrever);
         fwrite(&temp.codEstIntegra,sizeof(int),1,escrever);
         int tam = 0;
-        while(temp.nomeEstacao[tam] != 0)tam++;
+        while(temp.nomeEstacao[tam] != 0) tam++;
         fwrite(&tam,sizeof(int),1,escrever);
         bytesusados += tam;
         fwrite(temp.nomeEstacao,sizeof(char) * tam,1,escrever);
@@ -146,7 +145,7 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
         }
         
         pair parEstacao = make_pair(temp.codEstacao, temp.codProxEstacao);
-        if(temp.codProxEstacao != -1 && !existeParEstacao(nroParesDeEstacoes, parEstacao, nroParesDeEstacoes)) {
+        if(temp.codProxEstacao != -1 && !existeParEstacao(arrParesEstacoes, parEstacao, nroParesDeEstacoes)) {
             arrParesEstacoes[nroParesDeEstacoes++] = parEstacao;
         }
     }
