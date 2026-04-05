@@ -1,4 +1,4 @@
-all: TAD/CREATE.o TAD/fornecidas.o TAD/buscar.o TAD/DELETE.o TAD/SELECT.o TAD/util.o programaTrab.o
+all: TAD/CREATE.o TAD/fornecidas.o TAD/buscar.o TAD/DELETE.o TAD/SELECT.o TAD/SELECT_ALL.o TAD/util.o programaTrab.o
 	gcc TAD/CREATE.o TAD/fornecidas.o TAD/buscar.o TAD/DELETE.o TAD/SELECT.o TAD/SELECT_ALL.o TAD/util.o programaTrab.c -o programaTrab -std=c99 -Wall -lm
 
 TAD/CREATE.o:

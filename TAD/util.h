@@ -38,4 +38,8 @@ void printar_estacao(estacao* estacaoPrintar);
 
 void nulifica_estacao(estacao* temp);
 
+int conta_estacao(FILE* arquivo);
+
+int conta_par_estacao(FILE* arquivo);
+
 #endif

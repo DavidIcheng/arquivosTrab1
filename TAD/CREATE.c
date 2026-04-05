@@ -1,27 +1,5 @@
 #include "CREATE.h"
-
-// typedef struct Cabecalho {
-//     char status;
-//     int topo;
-//     int proxRRN;
-//     int nroEstacoes;
-//     int nroParesEstacao;
-// } cabecalho;
-
-
-bool existeEstacao(int* arrEstacoes, int codEstacao, int nroEstacoes) {
-    for(int i = 0; i < nroEstacoes; i++) {
-        if(arrEstacoes[i] == codEstacao) return true;
-    }
-    return false;
-}
-
-bool existeParEstacao(pair* paresDeEstacao, pair parEstacao, int nroParesDeEstacoes) {
-    for(int i = 0; i < nroParesDeEstacoes; i++) {
-        if(paresDeEstacao[i].ff == parEstacao.ff && paresDeEstacao[i].ss == parEstacao.ss) return true;
-    }
-    return false;
-}
+#include "util.h"
 
 void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
     int um = 1;
@@ -33,7 +11,7 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
     FILE *ler;
     FILE *escrever;
     ler = fopen(arquivoCSV, "r");
-    escrever = fopen(arquivoBIN,"wb");
+    escrever = fopen(arquivoBIN,"rb+");
 
     // 17bytes de 0, dps 
     
@@ -59,12 +37,6 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
     
     while(fgets(str,105,ler)) {
         proxRRN++;
-
-        if(nroEstacoes > limite-10) {
-            limite *= 2;
-            arrEstacoes = realloc(arrEstacoes, limite*sizeof(int));
-            arrParesEstacoes = realloc(arrEstacoes, limite*sizeof(pair));
-        }
         
         estacao temp;
         // strsep modifica o ponteiro, por isso usamos uma variável auxiliar 'ptr'
@@ -115,10 +87,10 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
         token = strsep(&resto, "\r\n"); 
         temp.codEstIntegra = (token && *token != '\0') ? atoi(token) : -1;
 
-        // Apenas para conferência:
+        int menosum = -1;
         int bytesusados = 37;
-        fwrite(&c_um,sizeof(char),1,escrever);
-        fwrite(&zero,sizeof(int),1,escrever);
+        fwrite(&c_zero,sizeof(char),1,escrever);
+        fwrite(&menosum,sizeof(int),1,escrever);
         fwrite(&temp.codEstacao,sizeof(int),1,escrever);
         fwrite(&temp.codLinha,sizeof(int),1,escrever);
         fwrite(&temp.codProxEstacao,sizeof(int),1,escrever);
@@ -138,16 +110,7 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
         for(int i = bytesusados; i < 80; i++){
             fwrite(&cifrao,sizeof(char),1,escrever);
         }
-
-        // nroEstacoes++;
-        if(!existeEstacao(arrEstacoes, temp.codEstacao, nroEstacoes)) {
-            arrEstacoes[nroEstacoes++] = temp.codEstacao;
-        }
-        
-        pair parEstacao = make_pair(temp.codEstacao, temp.codProxEstacao);
-        if(temp.codProxEstacao != -1 && !existeParEstacao(arrParesEstacoes, parEstacao, nroParesDeEstacoes)) {
-            arrParesEstacoes[nroParesDeEstacoes++] = parEstacao;
-        }
+    
     }
     
 
@@ -160,10 +123,14 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
     fwrite(&c_um,sizeof(char),1,escrever);
     fwrite(&topo, sizeof(int), 1, escrever);
     fwrite(&proxRRN, sizeof(int), 1, escrever);
+    nroEstacoes = conta_estacao(escrever);
+    nroParesDeEstacoes = conta_par_estacao(escrever);
+    fseek(escrever,9,SEEK_SET);
     fwrite(&nroEstacoes, sizeof(int), 1, escrever);
     fwrite(&nroParesDeEstacoes, sizeof(int), 1, escrever);
     
-
+    printf("\n%d\n",conta_estacao(escrever));
+    printf("\nNumero Pares: %d\n",conta_par_estacao(escrever));
 
     fclose(escrever);
     fclose(ler);

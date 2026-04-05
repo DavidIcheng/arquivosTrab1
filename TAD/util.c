@@ -12,6 +12,12 @@ pair make_pair(int ff, int ss) {
     return temp;
 }
 
+void swap(int* a, int* b){
+    int c = *a;
+    *a = *b;
+    *b = c;
+}
+
 void printar_estacao(estacao* e) {
 
     printf("%d ", e->codEstacao);
@@ -50,4 +56,74 @@ void nulifica_estacao(estacao* temp){
     temp->nomeEstacao = NULL;
     temp->tamNomeLinha = -1;
     temp->nomeLinha = NULL;
+}
+
+int conta_estacao(FILE* arquivo){
+    fseek(arquivo,5,SEEK_SET);
+    int registros;
+    fread(&registros,sizeof(int),1,arquivo);
+    char* lista[registros];
+    int diferentes = 0;
+    for(int i = 0; i < registros; i++){
+        fseek(arquivo,17 + (80 * i),SEEK_SET);
+        char removido;
+        fread(&removido,sizeof(char),1,arquivo);
+        if(removido == '1') continue;
+        int tamstring;
+        fseek(arquivo,17 + 29 + (80 * i),SEEK_SET);
+        fread(&tamstring,sizeof(int),1,arquivo);
+        char frase[tamstring + 1];                  //temos que sempre declarar um caractere a mais pois a função strcmp não funciona sem o \0 no final
+        fread(frase,tamstring,1,arquivo);
+        frase[tamstring] = '\0';
+        bool novo = true;
+        for(int j = 0; j < diferentes; j++){
+            if(strcmp(frase,lista[j]) == 0){
+                novo = false;
+                break;
+            }
+        }
+        if(novo){
+            lista[diferentes] = malloc((tamstring + 1) * sizeof(char));
+            for(int j = 0; j <= tamstring; j++){
+                lista[diferentes][j] = frase[j];
+            }
+            diferentes++;
+        }
+    }
+    for(int i = 0; i < diferentes; i++){
+        free(lista[i]);
+    }
+    return diferentes;
+}
+int conta_par_estacao(FILE* arquivo){
+    fseek(arquivo,5,SEEK_SET);
+    int registros;
+    fread(&registros,sizeof(int),1,arquivo);
+    int lista[registros][2];
+    int diferentes = 0;
+    for(int i = 0; i < registros; i++){
+        fseek(arquivo,17 + (80 * i),SEEK_SET);
+        char removido;
+        fread(&removido,sizeof(char),1,arquivo);
+        if(removido == '1') continue;
+        int id1,id2;
+        fseek(arquivo,17 + 5 + (80 * i),SEEK_SET);
+        fread(&id1,sizeof(int),1,arquivo);
+        fseek(arquivo,17 + 13 + (80 * i),SEEK_SET);
+        fread(&id2,sizeof(int),1,arquivo);
+        if(id2 == -1) continue;
+        bool novo = true;
+        for(int j = 0; j < diferentes; j++){
+            if(lista[j][0] == id1 && lista[j][1] == id2){
+                novo = false;
+                break;
+            }
+        }
+        if(novo){
+            lista[diferentes][0] = id1;
+            lista[diferentes][1] = id2;
+            diferentes++;
+        }
+    }
+    return diferentes;
 }
