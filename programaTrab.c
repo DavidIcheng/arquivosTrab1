@@ -26,7 +26,6 @@ int main(void) {
         char saida[40];
         scanf(" %s",entrada);
         scanf(" %s",saida);
-        //printf("%s %s", entrada, saida);
         CREATE_TABLE(entrada,saida);
     }else if(comando == 2){
         char entrada[40];

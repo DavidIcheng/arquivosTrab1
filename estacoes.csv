@@ -1,3 +1,5 @@
+CodEstacao,NomeEstacao,CodLinha,NomeLinha,CodProxEst,DistanciaProxEst,CodLinhaInteg,CodEstacaoInteg
+190,Jardim Romano,12,Safira,191,1990,,
 144,Granja Julieta,9,Esmeralda,145,1700,,
 78,Moema,5,Lilas,79,1314,,
 29,Brigadeiro,2,Verde,30,1015,,

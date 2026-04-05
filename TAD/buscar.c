@@ -47,7 +47,7 @@ int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimi
         fseek(arquivo,17 + i * 80,SEEK_SET);
         estacao temp;
         fread(&temp.removido,sizeof(char),1,arquivo);
-        if(temp.removido == '0') continue;
+        if(temp.removido == '1') continue;
         fseek(arquivo,22 + i * 80,SEEK_SET);
         
         fread(&temp.codEstacao,sizeof(int),1,arquivo);
