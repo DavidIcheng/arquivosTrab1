@@ -43,8 +43,7 @@ int main(void) {
         scanf(" %s",entrada);
         int n;
         scanf(" %d",&n);
-        int x = DELETE(entrada,n);
-        x++;
+        DELETE(entrada,n);
     }else if(comando == 5){
         //insercao
     }else if(comando == 6){

@@ -13,11 +13,19 @@ bool satisfazBase(estacao* base, estacao* temp) {
     if(base->distProxEstacao != -1 && base->distProxEstacao != temp->distProxEstacao) {
         return false;
     }
-    if(base->codLinhaIntegra != -1 && base->codLinhaIntegra != temp->codLinhaIntegra) {
-        return false;
+    if(base->codLinhaIntegra != -1) {
+        if(base->codLinhaIntegra == -2){
+            if(temp->codLinhaIntegra != -1) return false;
+        }else{
+            if(temp->codLinhaIntegra != base->codLinhaIntegra) return false;
+        }
     }
-    if(base->codEstIntegra != -1 && base->codEstIntegra != temp->codEstIntegra) {
-        return false;
+    if(base->codEstIntegra != -1) {
+        if(base->codEstIntegra == -2){
+            if(temp->codEstIntegra != -1) return false;
+        }else{
+            if(temp->codEstIntegra != base->codLinhaIntegra) return false;
+        }
     }
     if(base->tamNomeEstacao != -1 && base->tamNomeEstacao != temp->tamNomeEstacao) {
         return false;
@@ -35,14 +43,13 @@ bool satisfazBase(estacao* base, estacao* temp) {
 }
 
 // retorna quantas estacoes foram buscadas
-int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimir) {
+int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimir, bool quebralinhafinal) {
     int limite = 100;
     *encontrados = malloc(limite*sizeof(int));
     fseek(arquivo, 5, SEEK_SET);
     int cont = 0;
     int tam;
     fread(&tam,sizeof(int),1,arquivo);
-    printf("O tamanho eh %d\n", tam);
     for(int i = 0; i < tam; i++){
         fseek(arquivo,17 + i * 80,SEEK_SET);
         estacao temp;
@@ -65,6 +72,7 @@ int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimi
         
         if(satisfazBase(base, &temp)) {
             if(imprimir) {
+                cont++;
                 printar_estacao(&temp);
                 continue;
             }
@@ -75,10 +83,7 @@ int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimi
             }
         }
     }
-    if(cont != 0 && imprimir == false){
-        tam -= cont;
-        fseek(arquivo,5,SEEK_SET);
-        fwrite(&tam,sizeof(int),1,arquivo);
-    }
+    if(imprimir == 1 && quebralinhafinal == 1 && cont == 0) printf("Registro inexistente.\n");
+    if(quebralinhafinal == 1) printf("\n");
     return cont;
 }

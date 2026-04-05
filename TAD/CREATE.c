@@ -128,9 +128,6 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
     fseek(escrever,9,SEEK_SET);
     fwrite(&nroEstacoes, sizeof(int), 1, escrever);
     fwrite(&nroParesDeEstacoes, sizeof(int), 1, escrever);
-    
-    printf("\n%d\n",conta_estacao(escrever));
-    printf("\nNumero Pares: %d\n",conta_par_estacao(escrever));
 
     fclose(escrever);
     fclose(ler);

@@ -142,9 +142,21 @@ void pegar_info_estacao(estacao *nova,int rep){
         } else if(strcmp(s,"distProxEstacao") == 0) {
             scanf(" %d",&nova->distProxEstacao);
         } else if(strcmp(s,"codLinhaIntegra") == 0) {
-            scanf(" %d",&nova->codLinhaIntegra);
+            char* temp = malloc(sizeof(char) * 20);
+            scanf("%s",temp);
+            if(strcmp(temp,"NULO") == 0){
+                nova->codLinhaIntegra = -2;
+                continue;
+            }
+            nova->codLinhaIntegra = atoi(temp);
         } else if(strcmp(s,"codEstIntegra") == 0) {
-            scanf(" %d",&nova->codEstIntegra);
+            char* temp = malloc(sizeof(char) * 20);
+            scanf("%s",temp);
+            if(strcmp(temp,"NULO") == 0){
+                nova->codEstIntegra = -2;
+                continue;
+            }
+            nova->codEstIntegra = atoi(temp);
         } else if(strcmp(s,"tamNomeEstacao") == 0) {
             scanf(" %d",&nova->tamNomeEstacao);
         } else if(strcmp(s,"nomeEstacao") == 0) {
