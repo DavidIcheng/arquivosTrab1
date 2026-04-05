@@ -20,36 +20,8 @@ int DELETE(char *arquivoBIN, int n){
         estacao temp;
         nulifica_estacao(&temp);
         scanf("%d",&m);
-        for(int j = 0; j < m; j++){
-            char s[20];
-            scanf(" %s",s);
-            if(strcmp(s, "codEstacao") == 0) {
-                scanf(" %d",&temp.codEstacao);
-            } else if(strcmp(s,"codLinha") == 0) {
-                scanf(" %d",&temp.codLinha);
-            } else if(strcmp(s,"codProxEstacao") == 0) {
-                scanf(" %d",&temp.codProxEstacao);
-            } else if(strcmp(s,"distProxEstacao") == 0) {
-                scanf(" %d",&temp.distProxEstacao);
-            } else if(strcmp(s,"codLinhaIntegra") == 0) {
-                scanf(" %d",&temp.codLinhaIntegra);
-            } else if(strcmp(s,"codEstIntegra") == 0) {
-                scanf(" %d",&temp.codEstIntegra);
-            } else if(strcmp(s,"tamNomeEstacao") == 0) {
-                scanf(" %d",&temp.tamNomeEstacao);
-            } else if(strcmp(s,"nomeEstacao") == 0) {
-                temp.nomeEstacao = malloc(sizeof(char) * 30);
-                scanf(" %s",temp.nomeEstacao);
-            } else if(strcmp(s,"tamNomeLinha") == 0) {
-                scanf(" %d",&temp.tamNomeLinha);
-            } else if(strcmp(s,"nomeLinha") == 0) {
-                temp.nomeLinha = malloc(sizeof(char) * 30);
-                scanf(" %s",temp.nomeLinha);
-            } else {
-                printf("Campo invalido");
-            }
-        }
-        printar_estacao(&temp);
+        pegar_info_estacao(&temp,m);
+        //printar_estacao(&temp);
         int tam = buscar_estacao(&temp, &lista, escrever, false);
         printf("O primeiro el da lista eh %d\n", lista[0]);
         for(int i = 0; i < tam; i++){
@@ -59,6 +31,8 @@ int DELETE(char *arquivoBIN, int n){
             fwrite(&topo,sizeof(int),1,escrever);
             topo = lista[i];
         }
+        if(temp.nomeEstacao != NULL) free(temp.nomeEstacao);
+        if(temp.nomeLinha != NULL) free(temp.nomeLinha);
     }
     int novoTamEstacao = conta_estacao(escrever);
     int novoTamPar = conta_par_estacao(escrever);

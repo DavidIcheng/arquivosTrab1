@@ -1,4 +1,5 @@
 #include "util.h"
+#include "fornecidas.h"
 
 const int um = 1;
 const int zero = 0;
@@ -126,4 +127,36 @@ int conta_par_estacao(FILE* arquivo){
         }
     }
     return diferentes;
+}
+
+void pegar_info_estacao(estacao *nova,int rep){
+    for(int i = 0; i < rep; i++){
+        char s[20];
+        scanf(" %s",s);
+        if(strcmp(s, "codEstacao") == 0) {
+            scanf(" %d",&nova->codEstacao);
+        } else if(strcmp(s,"codLinha") == 0) {
+            scanf(" %d",&nova->codLinha);
+        } else if(strcmp(s,"codProxEstacao") == 0) {
+            scanf(" %d",&nova->codProxEstacao);
+        } else if(strcmp(s,"distProxEstacao") == 0) {
+            scanf(" %d",&nova->distProxEstacao);
+        } else if(strcmp(s,"codLinhaIntegra") == 0) {
+            scanf(" %d",&nova->codLinhaIntegra);
+        } else if(strcmp(s,"codEstIntegra") == 0) {
+            scanf(" %d",&nova->codEstIntegra);
+        } else if(strcmp(s,"tamNomeEstacao") == 0) {
+            scanf(" %d",&nova->tamNomeEstacao);
+        } else if(strcmp(s,"nomeEstacao") == 0) {
+            nova->nomeEstacao = malloc(sizeof(char) * 50);
+            ScanQuoteString(nova->nomeEstacao);
+        } else if(strcmp(s,"tamNomeLinha") == 0) {
+            scanf(" %d",&nova->tamNomeLinha);
+        } else if(strcmp(s,"nomeLinha") == 0) {
+            nova->nomeLinha = malloc(sizeof(char) * 50);
+            ScanQuoteString(nova->nomeLinha);
+        } else {
+            printf("Campo invalido\n");
+        }
+    }
 }

@@ -42,4 +42,6 @@ int conta_estacao(FILE* arquivo);
 
 int conta_par_estacao(FILE* arquivo);
 
+void pegar_info_estacao(estacao *nova,int rep);
+
 #endif
