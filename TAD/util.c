@@ -105,51 +105,67 @@ int conta_estacao(FILE* arquivo) {
             }
         }
         if(novo) {
-            
+            // Caso o nome não tenha aparecido ainda, precisamos salva-lo na lista.
             lista[diferentes] = malloc((tamstring + 1) * sizeof(char));
             for(int j = 0; j <= tamstring; j++){
                 lista[diferentes][j] = frase[j];
             }
-            diferentes++;
+            diferentes++; // Incrementando o contador
         }
     }
+    // Desalocando a memória
     for(int i = 0; i < diferentes; i++){
         free(lista[i]);
     }
     return diferentes;
 }
 
-int conta_par_estacao(FILE* arquivo){
+// Conta a quantidade de pares estações DIFERENTES que tem. Essa função é quase idêntica a conta_estacao.
+
+// arquivo: Arquivo binário contendo os registros.
+int conta_par_estacao(FILE* arquivo) {
+    
     fseek(arquivo,5,SEEK_SET);
-    int registros;
+    int registros; // Quantidade de registros existentes no arquivo
     fread(&registros,sizeof(int),1,arquivo);
+    
+    // Salva todos os pares de estação encontrados nos registros
     int lista[registros][2];
-    int diferentes = 0;
+    int diferentes = 0; // Contador de quantos nomes diferentes tem nos registros
+    
+    // Iterando por cada registro
     for(int i = 0; i < registros; i++){
-        fseek(arquivo,17 + (80 * i),SEEK_SET);
+        fseek(arquivo,17 + (80 * i),SEEK_SET); // O cabeçalho tem 17 bytes e cada registro tem 80 bytes
+
         char removido;
         fread(&removido,sizeof(char),1,arquivo);
-        if(removido == '1') continue;
-        int id1,id2;
+        if(removido == '1') continue; // Ignora estações removidas.
+
+        // Lê os pares de estação e armazena.
+        // id1: codEstacao
+        // id2: codProxEstacao
+        int id1, id2;
         fseek(arquivo,17 + 5 + (80 * i),SEEK_SET);
         fread(&id1,sizeof(int),1,arquivo);
         fseek(arquivo,17 + 13 + (80 * i),SEEK_SET);
         fread(&id2,sizeof(int),1,arquivo);
-        if(id2 == -1) continue;
-        bool novo = true;
+        if(id2 == -1) continue; // Nao existe codProxEstacao, entao ignora pois nao forma par.
+
+        bool novo = true; // flag representando se o nome ainda não apareceu no registro.
         for(int j = 0; j < diferentes; j++){
-            if(lista[j][0] == id1 && lista[j][1] == id2){
+            if(lista[j][0] == id1 && lista[j][1] == id2) { // Passa por par já visto e marca o flag como falso se já existir
                 novo = false;
                 break;
             }
         }
-        if(novo){
+        if(novo) {
+            // Caso o par não tenha aparecido ainda, precisamos salva-lo na lista.
             lista[diferentes][0] = id1;
             lista[diferentes][1] = id2;
             diferentes++;
         }
     }
-    return diferentes;
+    return diferentes; // Retorna a quantidade de pares de estações diferentes.
 }
 
 void pegar_info_estacao(estacao *nova,int rep){
@@ -228,6 +244,7 @@ void estacao_para_binario(estacao *est, int index ,FILE* arquivo){
 
 void binario_para_estacao(estacao *est, int index,FILE* arquivo){
     fseek(arquivo,17 + (80 * index),SEEK_SET);
+
     fread(&est->removido,sizeof(char),1,arquivo);
     fread(&est->proximo,sizeof(int),1,arquivo);
     fread(&est->codEstacao,sizeof(int),1,arquivo);
@@ -236,10 +253,12 @@ void binario_para_estacao(estacao *est, int index,FILE* arquivo){
     fread(&est->distProxEstacao,sizeof(int),1,arquivo);
     fread(&est->codLinhaIntegra,sizeof(int),1,arquivo);
     fread(&est->codEstIntegra,sizeof(int),1,arquivo);
+    
     fread(&est->tamNomeEstacao,sizeof(int),1,arquivo);
     est->nomeEstacao = malloc((est->tamNomeEstacao + 1) * sizeof(char));
     fread(est->nomeEstacao,sizeof(char),est->tamNomeEstacao,arquivo);
     est->nomeEstacao[est->tamNomeEstacao] = '\0';
+    
     fread(&est->tamNomeLinha,sizeof(int),1,arquivo);
     est->nomeLinha = malloc((est->tamNomeLinha + 1) * sizeof(char));
     fread(est->nomeLinha,sizeof(char),est->tamNomeLinha,arquivo);
