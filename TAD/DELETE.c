@@ -23,7 +23,7 @@ int DELETE(char *arquivoBIN, int n){
         scanf("%d",&m);
         pegar_info_estacao(&temp,m);
         //printar_estacao(&temp);
-        int tam = buscar_estacao(&temp, &lista, escrever, false,false);
+        int tam = buscar_estacao(&temp, &lista, escrever, false);
         for(int i = 0; i < tam; i++){
             fseek(escrever, 17 + (80) * lista[i], SEEK_SET);
             fwrite(&c_um,sizeof(char),1,escrever);

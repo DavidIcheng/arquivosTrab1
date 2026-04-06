@@ -43,7 +43,7 @@ bool satisfazBase(estacao* base, estacao* temp) {
 }
 
 // retorna quantas estacoes foram buscadas
-int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimir, bool quebralinhafinal) {
+int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimir) {
     int limite = 100;
     *encontrados = malloc(limite*sizeof(int));
     fseek(arquivo, 5, SEEK_SET);
@@ -83,7 +83,6 @@ int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimi
             }
         }
     }
-    if(imprimir == 1 && quebralinhafinal == 1 && cont == 0) printf("Registro inexistente.\n");
-    if(quebralinhafinal == 1) printf("\n");
+    if(imprimir == 1 && cont == 0) printf("Registro inexistente.\n");
     return cont;
 }

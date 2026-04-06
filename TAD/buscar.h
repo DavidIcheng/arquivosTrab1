@@ -3,7 +3,7 @@
 
     #include "util.h"
 
-    int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimir, bool quebralinhafinal);
+    int buscar_estacao(estacao* base, int** encontrados, FILE* arquivo, bool imprimir);
     int conta_estacao(FILE *ler);
     int conta_par_estacao(FILE *ler);
 #endif

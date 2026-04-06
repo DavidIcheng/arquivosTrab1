@@ -14,7 +14,7 @@ void SELECT_ALL(char *arquivoBIN) {
     int *lista;
     estacao temp;
     nulifica_estacao(&temp);
-    int tam = buscar_estacao(&temp, &lista, arquivo, true, false);
+    int tam = buscar_estacao(&temp, &lista, arquivo, true);
     
     fseek(arquivo,0,SEEK_SET);
     fwrite(&c_um,sizeof(char),1,arquivo);

@@ -18,7 +18,11 @@ void SELECT(char *arquivoBIN, int n){
         nulifica_estacao(&temp);
         scanf("%d",&m);
         pegar_info_estacao(&temp,m);
-        int tam = buscar_estacao(&temp, &lista, arquivo, true,true);
+        
+        int tam = buscar_estacao(&temp, &lista, arquivo, true);
+        // tem q printar uma quebra de linha no final
+        printf("\n");
+
         if(temp.nomeEstacao != NULL) free(temp.nomeEstacao);
         if(temp.nomeLinha != NULL) free(temp.nomeLinha);
     }

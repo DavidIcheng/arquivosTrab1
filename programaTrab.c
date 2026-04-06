@@ -47,7 +47,7 @@ int main(void) {
     }else if(comando == 5){
         //insercao
     }else if(comando == 6){
-        //depoois nois le o 6
+        //atualizar
     }else{
         printf("Comando Inválido\n");
     }
