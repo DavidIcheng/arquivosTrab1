@@ -2,17 +2,14 @@
 #include "util.h"
 
 void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
-    int um = 1;
-    int zero = 0;
-    char czero = '0';
-    char c_um = '1';
-    char cifrao = '$';
-
     FILE *ler;
     FILE *escrever;
     ler = fopen(arquivoCSV, "r");
     escrever = fopen(arquivoBIN,"rb+");
-
+    if(ler == NULL || escrever == NULL) {
+        printf("Falha no processamento do arquivo.\n");
+        return;
+    }
     // 17bytes de 0, dps 
     
     for(int i = 0; i < 17; i++) {
@@ -43,11 +40,9 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
         char *resto = str;
         char *token;
 
-        // 1. codEstacao
         token = strsep(&resto, ",");
         temp.codEstacao = (token && *token != '\0') ? atoi(token) : -1;
 
-        // 2. nomeEstacao
         token = strsep(&resto, ",");
         if (token && *token != '\0') {
             temp.nomeEstacao = strdup(token);
@@ -57,11 +52,10 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
             temp.tamNomeEstacao = 0;
         }
 
-        // 3. codLinha
         token = strsep(&resto, ",");
+        // Se o token existir e nn for nulo a gente transforma p inteiro, se nn ele recebe -1
         temp.codLinha = (token && *token != '\0') ? atoi(token) : -1;
 
-        // 4. nomeLinha
         token = strsep(&resto, ",");
         if (token && *token != '\0') {
             temp.nomeLinha = strdup(token);
@@ -71,53 +65,25 @@ void CREATE_TABLE (char *arquivoCSV, char *arquivoBIN) {
             temp.tamNomeLinha = 0;
         }
 
-        // 5. codProxEstacao
         token = strsep(&resto, ",");
         temp.codProxEstacao = (token && *token != '\0') ? atoi(token) : -1;
 
-        // 6. distProxEstacao
         token = strsep(&resto, ",");
         temp.distProxEstacao = (token && *token != '\0') ? atoi(token) : -1;
 
-        // 7. codLinhaIntegra (Lida com o caso de ser vazio antes da vírgula)
         token = strsep(&resto, ",");
         temp.codLinhaIntegra = (token && *token != '\0') ? atoi(token) : -1;
 
-        // 8. codEstIntegra (Lida com o final da linha e o \n)
         token = strsep(&resto, "\r\n"); 
         temp.codEstIntegra = (token && *token != '\0') ? atoi(token) : -1;
 
-        int menosum = -1;
-        int bytesusados = 37;
-        fwrite(&c_zero,sizeof(char),1,escrever);
-        fwrite(&menosum,sizeof(int),1,escrever);
-        fwrite(&temp.codEstacao,sizeof(int),1,escrever);
-        fwrite(&temp.codLinha,sizeof(int),1,escrever);
-        fwrite(&temp.codProxEstacao,sizeof(int),1,escrever);
-        fwrite(&temp.distProxEstacao,sizeof(int),1,escrever);
-        fwrite(&temp.codLinhaIntegra,sizeof(int),1,escrever);
-        fwrite(&temp.codEstIntegra,sizeof(int),1,escrever);
-        int tam = 0;
-        while(temp.nomeEstacao[tam] != 0) tam++;
-        fwrite(&tam,sizeof(int),1,escrever);
-        bytesusados += tam;
-        fwrite(temp.nomeEstacao,sizeof(char) * tam,1,escrever);
-        tam = 0;
-        while(temp.nomeLinha[tam] != 0)tam++;
-        fwrite(&tam,sizeof(int),1,escrever);
-        bytesusados += tam;
-        fwrite(temp.nomeLinha,sizeof(char) * tam,1,escrever);
-        for(int i = bytesusados; i < 80; i++){
-            fwrite(&cifrao,sizeof(char),1,escrever);
-        }
-    
+        temp.removido = '0';
+        temp.proximo = -1;
+
+        estacao_para_binario(&temp,proxRRN-1,escrever);
     }
-    
 
     fseek(escrever, 0, SEEK_SET); // volta p comeco
-    // SEEK_SET: movimentação do cmc do arquivo 
-    // SEEK_CUR: a partir da posição do ponteiro
-    // SEEK_END: do final
 
     int topo = -1;
     fwrite(&c_um,sizeof(char),1,escrever);

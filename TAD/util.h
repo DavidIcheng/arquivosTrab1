@@ -44,4 +44,8 @@ int conta_par_estacao(FILE* arquivo);
 
 void pegar_info_estacao(estacao *nova,int rep);
 
+void estacao_para_binario(estacao *est, int index ,FILE* arquivo);
+
+void binario_para_estacao(estacao *est, int index,FILE* arquivo);
+
 #endif

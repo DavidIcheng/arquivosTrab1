@@ -8,6 +8,10 @@
 void SELECT(char *arquivoBIN, int n){
     FILE *arquivo;
     arquivo = fopen(arquivoBIN,"rb+");
+    if(arquivo == NULL) {
+        printf("Falha no processamento do arquivo.\n");
+        return;
+    }
     // fseek(escrever, 1, SEEK_SET);
     fwrite(&c_zero,sizeof(char),1,arquivo);
 

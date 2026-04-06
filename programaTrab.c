@@ -8,6 +8,7 @@
 #include "TAD/fornecidas.h"
 #include "TAD/util.h"
 #include "TAD/SELECT_ALL.h"
+#include "TAD/UPDATE.h"
 
 // typedef struct Cabecalho {
 //     char status;
@@ -47,7 +48,11 @@ int main(void) {
     }else if(comando == 5){
         //insercao
     }else if(comando == 6){
-        //atualizar
+        char entrada[40];
+        scanf(" %s",entrada);
+        int n;
+        scanf(" %d",&n);
+        UPDATE(entrada,n);
     }else{
         printf("Comando Inválido\n");
     }
